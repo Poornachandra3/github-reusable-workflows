@@ -5,6 +5,9 @@ on:
       project_name:
         required: true
         type: string
+    secrets:
+      vault_token:
+        required: true
 jobs:
   CI_Steps:
     runs-on: [self-hosted]
@@ -21,6 +24,6 @@ jobs:
         name: Code Unit Tests
       - run: echo npm run test:integration
         name: Code Integration Tests
-      - run: echo /opt/sonar-scanner-6.1.0.4477-linux-x64/bin/sonar-scanner  -Dsonar.host.url=http://sonarqube-internal.poornachandra3.online:9000 -Dsonar.projectKey=${{ inputs.project_name }} -Dsonar.qualitygate.wait=true
+      - run: echo /opt/sonar-scanner-6.1.0.4477-linux-x64/bin/sonar-scanner  -Dsonar.host.url=http://sonarqube-internal.poornachandra3.online:9000 -Dsonar.projectKey=${{ inputs.project_name }} -Dsonar.qualitygate.wait=true - ${{ secrets.vault_token }}
         name: Code Review
       - run: echo OK
