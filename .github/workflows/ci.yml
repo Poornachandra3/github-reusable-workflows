@@ -35,7 +35,7 @@ jobs:
 
       - run: npm install
         name: Install NodeJS modules
-        if: $( inputs.npm_install)
+        if: ${{ inputs.npm_install }}
 
 
       - run: echo npm run test:unit
