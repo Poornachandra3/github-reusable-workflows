@@ -37,8 +37,8 @@ jobs:
             common/data/common artifactory_password | artifactory_password ;
 
 
-      - run : echo ${GITHUB_REF_NAME} >VERSION\
-        name: Create Version File`
+      - run : echo ${GITHUB_REF_NAME} >VERSION
+        name: Create Version File
       - run: zip -r ${GITHUB_REF_NAME}.zip  ${{ inputs.release_archive_file }}
         name: Prepare Artifact
       - run: ls -lh
